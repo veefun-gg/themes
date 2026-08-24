@@ -13,6 +13,8 @@
  */
 define( 'CHILD_THEME_VEEFUN_VERSION', '1.0.0' );
 
+require_once __DIR__ . '/frontend-writer-guard.php';
+
 /**
  * Enqueue styles
  */
