@@ -18,7 +18,19 @@ define( 'CHILD_THEME_VEEFUN_VERSION', '1.0.0' );
  */
 function child_enqueue_styles() {
 
-	wp_enqueue_style( 'veefun-theme-css', get_stylesheet_directory_uri() . '/style.css', array('astra-theme-css'), CHILD_THEME_VEEFUN_VERSION, 'all' );
+	wp_enqueue_style( 'veefun-theme-css', get_stylesheet_directory_uri() . '/style.css', array( 'astra-theme-css' ), CHILD_THEME_VEEFUN_VERSION, 'all' );
+
+	if ( is_front_page() || is_page( 1524 ) ) {
+		$collector_stylesheet = get_stylesheet_directory() . '/assets/css/collector-entrypoint.css';
+
+		wp_enqueue_style(
+			'veefun-collector-entrypoint',
+			get_stylesheet_directory_uri() . '/assets/css/collector-entrypoint.css',
+			array( 'veefun-theme-css' ),
+			(string) filemtime( $collector_stylesheet ),
+			'all'
+		);
+	}
 
 }
 
