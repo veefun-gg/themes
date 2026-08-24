@@ -35,3 +35,39 @@ function child_enqueue_styles() {
 }
 
 add_action( 'wp_enqueue_scripts', 'child_enqueue_styles', 15 );
+
+/**
+ * Attach Elementor's frontend configuration for the custom front page.
+ *
+ * The static front page retains Elementor's saved asset metadata, but this
+ * child-theme template does not render its former Elementor content. Run just
+ * after Elementor's normal footer callback so its public frontend lifecycle
+ * can supply the configuration only when the saved-assets loader enqueued the
+ * frontend script and Elementor has not already supplied it.
+ */
+function veefun_prepare_front_page_elementor_config() {
+	static $prepared = false;
+
+	if (
+		$prepared
+		|| ! is_front_page()
+		|| ! did_action( 'elementor/loaded' )
+		|| ! class_exists( '\\Elementor\\Plugin' )
+		|| ! isset( \Elementor\Plugin::$instance->frontend )
+		|| ! wp_script_is( 'elementor-frontend', 'enqueued' )
+		|| did_action( 'elementor/frontend/after_enqueue_scripts' )
+	) {
+		return;
+	}
+
+	$elementor_frontend = \Elementor\Plugin::$instance->frontend;
+
+	if ( ! is_callable( array( $elementor_frontend, 'enqueue_scripts' ) ) ) {
+		return;
+	}
+
+	$prepared = true;
+	$elementor_frontend->enqueue_scripts();
+}
+
+add_action( 'wp_footer', 'veefun_prepare_front_page_elementor_config', 11 );
