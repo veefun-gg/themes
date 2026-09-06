@@ -108,6 +108,10 @@
 	outline-offset: var(--vf-focus-offset);
 }
 
+.vf-c-action:focus-visible {
+	color: var(--vf-color-on-action);
+}
+
 @media (prefers-reduced-motion: reduce) {
 	.vf-c-relationship-link,
 	.vf-c-action {
