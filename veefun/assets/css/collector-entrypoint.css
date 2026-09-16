@@ -413,3 +413,161 @@
 		border: 1px solid CanvasText;
 	}
 }
+
+/* News adapts the merged foundation; shared Collector/Home rules stay intact. */
+.ast-theme-transparent-header.ast-header-break-point .vf-news-page .vf-page-header {
+	/* Astra's configured mobile header is 72px and sits outside normal flow. */
+	padding-block-start: calc(var(--vf-space-8) + var(--vf-space-2));
+}
+
+.vf-news-page .vf-page-header {
+	background: var(--vf-paper);
+	border-block-end: 1px solid var(--vf-line);
+	color: var(--vf-color-identity);
+}
+
+.vf-news-page .vf-page-header .vf-shell {
+	padding-block: clamp(var(--vf-space-6), 5vw, var(--vf-space-7));
+}
+
+.vf-news-page .vf-page-header h1 {
+	color: var(--vf-color-identity);
+	font-size: clamp(2rem, 4vw, 3rem);
+	letter-spacing: -0.025em;
+	line-height: 1.15;
+}
+
+.vf-news-page .vf-page-header .vf-eyebrow {
+	color: var(--vf-color-relationship);
+	margin-block-end: var(--vf-space-3);
+}
+
+.vf-news-page .vf-page-intro {
+	color: var(--vf-color-evidence);
+	font-size: 1rem;
+	margin-block-start: var(--vf-space-4);
+	max-inline-size: var(--vf-measure-copy);
+}
+
+.vf-news-page .vf-news-feed {
+	min-height: 0;
+	padding-block: var(--vf-space-6) var(--vf-space-7);
+}
+
+.vf-news-page .vf-news-feed__title {
+	color: var(--vf-color-identity);
+	font-size: 1.25rem;
+	line-height: 1.4;
+	margin: 0 0 var(--vf-space-5);
+}
+
+.vf-news-page .vf-news-list {
+	border-block-end: 1px solid var(--vf-line);
+	gap: 0;
+}
+
+.vf-news-page .vf-news-card {
+	align-items: start;
+	background: transparent;
+	border: 0;
+	border-block-start: 1px solid var(--vf-line);
+	border-radius: 0;
+	color: var(--vf-color-identity);
+	gap: var(--vf-space-5);
+	grid-template-columns: minmax(0, 1fr);
+	overflow: visible;
+	padding-block: var(--vf-space-6);
+}
+
+.vf-news-page .vf-news-card__body {
+	display: grid;
+	gap: var(--vf-space-3);
+	min-inline-size: 0;
+	overflow-wrap: anywhere;
+	padding: 0;
+}
+
+.vf-news-page .vf-news-card__body > p {
+	color: var(--vf-color-evidence);
+	margin: 0;
+	max-inline-size: var(--vf-measure-copy);
+}
+
+.vf-news-page .vf-news-card__body > .vf-kicker {
+	color: var(--vf-color-relationship);
+}
+
+.vf-news-page .vf-news-card__title {
+	color: var(--vf-color-identity);
+	font-size: clamp(1.4rem, 2.5vw, 2rem);
+	letter-spacing: -0.025em;
+	line-height: 1.25;
+	margin: 0;
+	max-inline-size: var(--vf-measure-copy);
+}
+
+.vf-news-page .vf-news-card__title a {
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: var(--vf-space-1);
+	/* Override Astra's all-property transition so focus is immediate. */
+	transition: none;
+}
+
+.vf-news-page .vf-news-card__action {
+	align-items: center;
+	color: var(--vf-color-relationship);
+	display: flex;
+	justify-self: start;
+	max-inline-size: 100%;
+	min-block-size: 44px;
+	padding-block: var(--vf-space-2);
+	text-decoration: underline;
+}
+
+.vf-news-page .vf-news-card__title a:hover,
+.vf-news-page .vf-news-card__action:hover {
+	color: var(--vf-color-relationship);
+	text-decoration-thickness: 2px;
+}
+
+.vf-news-page .vf-news-card__image {
+	max-inline-size: 14rem;
+	min-inline-size: 0;
+}
+
+.vf-news-page .vf-news-card__image img {
+	aspect-ratio: auto;
+	height: auto;
+	max-block-size: 12rem;
+	min-height: 0;
+	object-fit: contain;
+}
+
+.vf-news-page a:focus-visible {
+	outline: var(--vf-focus-width) solid var(--vf-color-focus);
+	outline-offset: var(--vf-focus-offset);
+}
+
+@media (min-width: 720px) {
+	.vf-news-page .vf-news-card.has-image {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 14rem);
+	}
+}
+
+@media (forced-colors: active) {
+	.vf-news-page .vf-page-header,
+	.vf-news-page .vf-news-list,
+	.vf-news-page .vf-news-card {
+		border-color: CanvasText;
+	}
+
+	.vf-news-page .vf-news-card__title a,
+	.vf-news-page .vf-news-card__action {
+		color: LinkText;
+	}
+
+	.vf-news-page a:focus-visible {
+		outline-color: Highlight;
+	}
+}
