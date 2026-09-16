@@ -114,29 +114,32 @@ if ( $allowed_category_ids ) {
 		</div>
 	</header>
 
-	<?php if ( $news_posts ) : ?>
-		<section class="vf-news-feed vf-section vf-shell" aria-labelledby="vf-news-feed-title">
-			<h2 id="vf-news-feed-title" class="screen-reader-text">Published news and guides</h2>
+	<section class="vf-news-feed vf-section vf-shell" aria-labelledby="vf-news-feed-title">
+		<h2 id="vf-news-feed-title" class="vf-news-feed__title">Published news and guides</h2>
+		<?php if ( $news_posts ) : ?>
 			<div class="vf-news-list<?php echo 1 === count( $news_posts ) ? ' vf-news-list--single' : ''; ?>">
 				<?php foreach ( $news_posts as $news_post ) : ?>
-					<article class="vf-news-card">
-						<?php if ( has_post_thumbnail( $news_post ) ) : ?>
+					<?php $has_image = has_post_thumbnail( $news_post ); ?>
+					<article class="vf-news-card<?php echo $has_image ? ' has-image' : ''; ?>">
+						<div class="vf-news-card__body">
+							<p class="vf-kicker"><?php echo esc_html( $get_category_label( $news_post->ID ) ); ?></p>
+							<h3 class="vf-news-card__title"><a href="<?php echo esc_url( get_permalink( $news_post ) ); ?>"><?php echo esc_html( get_the_title( $news_post ) ); ?></a></h3>
+							<p><?php echo esc_html( get_the_excerpt( $news_post ) ); ?></p>
+							<p class="vf-story-meta">Published <time datetime="<?php echo esc_attr( get_the_date( DATE_W3C, $news_post ) ); ?>"><?php echo esc_html( get_the_date( 'F j, Y', $news_post ) ); ?></time></p>
+							<a class="vf-news-card__action vf-c-relationship-link" href="<?php echo esc_url( get_permalink( $news_post ) ); ?>">Read <?php echo esc_html( get_the_title( $news_post ) ); ?></a>
+						</div>
+						<?php if ( $has_image ) : ?>
 							<a class="vf-news-card__image" href="<?php echo esc_url( get_permalink( $news_post ) ); ?>" tabindex="-1" aria-hidden="true">
 								<?php echo get_the_post_thumbnail( $news_post, 'large' ); ?>
 							</a>
 						<?php endif; ?>
-						<div class="vf-news-card__body">
-							<p class="vf-kicker"><?php echo esc_html( $get_category_label( $news_post->ID ) ); ?></p>
-							<h2><a href="<?php echo esc_url( get_permalink( $news_post ) ); ?>"><?php echo esc_html( get_the_title( $news_post ) ); ?></a></h2>
-							<p><?php echo esc_html( get_the_excerpt( $news_post ) ); ?></p>
-							<p class="vf-story-meta">Published <time datetime="<?php echo esc_attr( get_the_date( DATE_W3C, $news_post ) ); ?>"><?php echo esc_html( get_the_date( 'F j, Y', $news_post ) ); ?></time></p>
-							<a class="vf-button-link" href="<?php echo esc_url( get_permalink( $news_post ) ); ?>">Read <?php echo esc_html( get_the_title( $news_post ) ); ?></a>
-						</div>
 					</article>
 				<?php endforeach; ?>
 			</div>
-		</section>
-	<?php endif; ?>
+		<?php else : ?>
+			<p class="vf-c-empty-state">No published news or guides are available here yet.</p>
+		<?php endif; ?>
+	</section>
 </main>
 
 <?php
