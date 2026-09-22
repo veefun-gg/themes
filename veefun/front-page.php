@@ -163,30 +163,49 @@ if ( $featured_post ) {
 <main id="primary" class="vf-entrypoint vf-homepage">
 	<section class="vf-hero" aria-labelledby="vf-home-title">
 		<div class="vf-shell vf-hero__inner">
-			<p class="vf-eyebrow">For Pokémon card collectors</p>
-			<h1 id="vf-home-title">News, Pokémon, and card prices—without the clutter.</h1>
-			<p class="vf-hero__summary">Follow collecting stories, explore Pokémon and their cards, and check cached price information when it’s available.</p>
+			<div class="vf-home-intro">
+				<p class="vf-eyebrow">For the joy of collecting</p>
+				<h1 id="vf-home-title">Find your next favorite.</h1>
+				<p class="vf-hero__summary">Explore Pokémon, look up cards, and follow the stories that make collecting fun.</p>
+			</div>
+			<div class="vf-home-objects" role="group" aria-label="Explore Mew and Pokémon cards">
+				<article class="vf-home-object">
+					<p class="vf-kicker">Pokémon <span>#151</span></p>
+					<?php // Keep the existing media optional; the subject remains useful without it. ?>
+					<?php if ( defined( 'WP_CONTENT_DIR' ) && is_readable( WP_CONTENT_DIR . '/uploads/2026/03/151.png' ) ) : ?>
+						<div class="vf-home-object__art">
+							<img src="<?php echo esc_url( content_url( '/uploads/2026/03/151.png' ) ); ?>" alt="" width="475" height="475" decoding="async">
+						</div>
+					<?php endif; ?>
+					<h2>Mew</h2>
+					<p class="vf-home-object__detail">Meet Pokémon #151.</p>
+					<a class="vf-text-link" href="<?php echo esc_url( home_url( '/pokedex/151-mew/' ) ); ?>">Explore Mew <span aria-hidden="true">→</span></a>
+				</article>
+				<article class="vf-home-object vf-home-object--cards">
+					<p class="vf-kicker">From Pokémon to cards</p>
+					<h2>Find your next card.</h2>
+					<p class="vf-home-object__detail">Explore stored card details and cached prices when available.</p>
+					<a class="vf-text-link" href="<?php echo esc_url( home_url( '/price-guide/' ) ); ?>">Browse cards <span aria-hidden="true">→</span></a>
+				</article>
+			</div>
 		</div>
 	</section>
 
 	<nav class="vf-resource-nav vf-shell" aria-label="Collector resources">
-		<a class="vf-resource-card" href="<?php echo esc_url( home_url( '/news/' ) ); ?>">
-			<span class="vf-resource-card__number" aria-hidden="true">01</span>
-			<span class="vf-resource-card__title">Follow the hobby</span>
-			<span class="vf-resource-card__copy">Collector news, new releases, and practical guides.</span>
-			<span class="vf-text-link">Explore News <span aria-hidden="true">→</span></span>
-		</a>
 		<a class="vf-resource-card" href="<?php echo esc_url( home_url( '/pokedex/' ) ); ?>">
-			<span class="vf-resource-card__number" aria-hidden="true">02</span>
-			<span class="vf-resource-card__title">Explore Pokémon</span>
-			<span class="vf-resource-card__copy">Browse Pokémon profiles and find their connected cards.</span>
-			<span class="vf-text-link">Open the Pokédex <span aria-hidden="true">→</span></span>
+			<span class="vf-resource-card__title">Pokédex</span>
+			<span class="vf-resource-card__copy">Meet the Pokémon</span>
+			<span class="vf-resource-card__arrow" aria-hidden="true">↗</span>
 		</a>
 		<a class="vf-resource-card" href="<?php echo esc_url( home_url( '/price-guide/' ) ); ?>">
-			<span class="vf-resource-card__number" aria-hidden="true">03</span>
-			<span class="vf-resource-card__title">Look up cards</span>
-			<span class="vf-resource-card__copy">Search stored card details and view cached prices when available.</span>
-			<span class="vf-text-link">Open the Price Guide <span aria-hidden="true">→</span></span>
+			<span class="vf-resource-card__title">Price Guide</span>
+			<span class="vf-resource-card__copy">Know your cards</span>
+			<span class="vf-resource-card__arrow" aria-hidden="true">↗</span>
+		</a>
+		<a class="vf-resource-card" href="<?php echo esc_url( home_url( '/news/' ) ); ?>">
+			<span class="vf-resource-card__title">News &amp; Guides</span>
+			<span class="vf-resource-card__copy">Follow the hobby</span>
+			<span class="vf-resource-card__arrow" aria-hidden="true">↗</span>
 		</a>
 	</nav>
 
@@ -200,13 +219,13 @@ if ( $featured_post ) {
 			<div class="vf-story-layout">
 				<article class="vf-featured-story">
 					<?php if ( has_post_thumbnail( $featured_post ) ) : ?>
-						<a class="vf-featured-story__image" href="<?php echo esc_url( get_permalink( $featured_post ) ); ?>" tabindex="-1" aria-hidden="true">
+						<a class="vf-featured-story__image" href="<?php echo esc_url( get_permalink( $featured_post ) ); ?>" tabindex="-1" aria-labelledby="vf-featured-story-title">
 							<?php echo get_the_post_thumbnail( $featured_post, 'large', array( 'loading' => 'eager' ) ); ?>
 						</a>
 					<?php endif; ?>
 					<div class="vf-featured-story__body">
 						<p class="vf-kicker"><?php echo esc_html( $get_category_label( $featured_post->ID ) ); ?></p>
-						<h3><a href="<?php echo esc_url( get_permalink( $featured_post ) ); ?>"><?php echo esc_html( get_the_title( $featured_post ) ); ?></a></h3>
+						<h3 id="vf-featured-story-title"><a href="<?php echo esc_url( get_permalink( $featured_post ) ); ?>"><?php echo esc_html( get_the_title( $featured_post ) ); ?></a></h3>
 						<p><?php echo esc_html( get_the_excerpt( $featured_post ) ); ?></p>
 						<p class="vf-story-meta"><time datetime="<?php echo esc_attr( get_the_date( DATE_W3C, $featured_post ) ); ?>"><?php echo esc_html( get_the_date( 'F j, Y', $featured_post ) ); ?></time></p>
 						<a class="vf-button-link" href="<?php echo esc_url( get_permalink( $featured_post ) ); ?>">Read <?php echo esc_html( get_the_title( $featured_post ) ); ?></a>
@@ -214,7 +233,7 @@ if ( $featured_post ) {
 				</article>
 
 				<?php if ( $supporting ) : ?>
-					<div class="vf-supporting-stories" aria-label="More recent stories">
+					<div class="vf-supporting-stories" role="group" aria-label="More recent stories">
 						<?php foreach ( $supporting as $supporting_post ) : ?>
 							<article class="vf-supporting-story">
 								<p class="vf-kicker"><?php echo esc_html( $get_category_label( $supporting_post->ID ) ); ?></p>
@@ -227,29 +246,6 @@ if ( $featured_post ) {
 			</div>
 		</section>
 	<?php endif; ?>
-
-	<section class="vf-previews vf-section vf-shell" aria-labelledby="vf-previews-title">
-		<div class="vf-section-heading">
-			<p class="vf-eyebrow">Explore connected collecting tools</p>
-			<h2 id="vf-previews-title">Start with Machop</h2>
-		</div>
-		<div class="vf-preview-grid">
-			<article class="vf-preview-card">
-				<p class="vf-kicker">Featured Pokémon</p>
-				<p class="vf-preview-card__number">#066</p>
-				<h3>Machop</h3>
-				<p>Fighting type · Profile and connected cards</p>
-				<a class="vf-text-link" href="<?php echo esc_url( home_url( '/pokedex/66-machop/' ) ); ?>">View Machop <span aria-hidden="true">→</span></a>
-			</article>
-			<article class="vf-preview-card">
-				<p class="vf-kicker">Featured card</p>
-				<p class="vf-preview-card__number">52/102</p>
-				<h3>Machop · Base Set · 52/102</h3>
-				<p>Stored card details with cached pricing when available</p>
-				<a class="vf-text-link" href="<?php echo esc_url( home_url( '/price-guide/machop/base1-52/' ) ); ?>">View the card <span aria-hidden="true">→</span></a>
-			</article>
-		</div>
-	</section>
 </main>
 
 <?php
