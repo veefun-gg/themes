@@ -602,7 +602,7 @@
 	padding-block-end: var(--vf-space-6);
 }
 
-html.astra-dark-mode-enable .vf-homepage,
+/* Astra toggles body; html can retain its initial dark class. */
 body.astra-dark-mode-enable .vf-homepage {
 	--vf-paper: #0f172a;
 	--vf-panel: #1e293b;
