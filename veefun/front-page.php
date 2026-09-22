@@ -179,13 +179,13 @@ if ( $featured_post ) {
 					<?php endif; ?>
 					<h2>Mew</h2>
 					<p class="vf-home-object__detail">Meet Pokémon #151.</p>
-					<a class="vf-text-link" href="<?php echo esc_url( home_url( '/pokedex/151-mew/' ) ); ?>">Explore Mew <span aria-hidden="true">→</span></a>
+					<a class="vf-text-link" href="<?php echo esc_url( home_url( '/pokedex/151-mew/' ) ); ?>">Explore Mew <span aria-hidden="true">›</span></a>
 				</article>
 				<article class="vf-home-object vf-home-object--cards">
 					<p class="vf-kicker">From Pokémon to cards</p>
 					<h2>Find your next card.</h2>
 					<p class="vf-home-object__detail">Explore stored card details and cached prices when available.</p>
-					<a class="vf-text-link" href="<?php echo esc_url( home_url( '/price-guide/' ) ); ?>">Browse cards <span aria-hidden="true">→</span></a>
+					<a class="vf-text-link" href="<?php echo esc_url( home_url( '/price-guide/' ) ); ?>">Browse cards <span aria-hidden="true">›</span></a>
 				</article>
 			</div>
 		</div>
@@ -195,17 +195,17 @@ if ( $featured_post ) {
 		<a class="vf-resource-card" href="<?php echo esc_url( home_url( '/pokedex/' ) ); ?>">
 			<span class="vf-resource-card__title">Pokédex</span>
 			<span class="vf-resource-card__copy">Meet the Pokémon</span>
-			<span class="vf-resource-card__arrow" aria-hidden="true">↗</span>
+			<span class="vf-resource-card__arrow" aria-hidden="true">›</span>
 		</a>
 		<a class="vf-resource-card" href="<?php echo esc_url( home_url( '/price-guide/' ) ); ?>">
 			<span class="vf-resource-card__title">Price Guide</span>
 			<span class="vf-resource-card__copy">Know your cards</span>
-			<span class="vf-resource-card__arrow" aria-hidden="true">↗</span>
+			<span class="vf-resource-card__arrow" aria-hidden="true">›</span>
 		</a>
 		<a class="vf-resource-card" href="<?php echo esc_url( home_url( '/news/' ) ); ?>">
 			<span class="vf-resource-card__title">News &amp; Guides</span>
 			<span class="vf-resource-card__copy">Follow the hobby</span>
-			<span class="vf-resource-card__arrow" aria-hidden="true">↗</span>
+			<span class="vf-resource-card__arrow" aria-hidden="true">›</span>
 		</a>
 	</nav>
 
