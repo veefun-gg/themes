@@ -919,6 +919,30 @@ body.astra-dark-mode-enable .vf-homepage {
 	}
 }
 
+/* The transparent header sits outside Home's palette-token scope. */
+body.home.ast-theme-transparent-header:not(.astra-dark-mode-enable) #masthead #ast-desktop-header .main-header-menu > .menu-item > .menu-link,
+body.home.ast-theme-transparent-header:not(.astra-dark-mode-enable) #masthead #ast-desktop-header .ast-header-search .ast-icon,
+body.home.ast-theme-transparent-header:not(.astra-dark-mode-enable) #masthead #ast-desktop-header .ast-header-account-text,
+body.home.ast-theme-transparent-header:not(.astra-dark-mode-enable) #masthead #ast-desktop-header .ast-switcher-button {
+	color: var(--vf-color-identity);
+}
+
+body.home.ast-theme-transparent-header:not(.astra-dark-mode-enable) #masthead #ast-desktop-header .main-header-menu > .current-menu-item > .menu-link,
+body.home.ast-theme-transparent-header:not(.astra-dark-mode-enable) #masthead #ast-desktop-header .main-header-menu > .menu-item > .menu-link:hover,
+body.home.ast-theme-transparent-header:not(.astra-dark-mode-enable) #masthead #ast-desktop-header .main-header-menu > .menu-item > .menu-link:focus-visible,
+body.home.ast-theme-transparent-header:not(.astra-dark-mode-enable) #masthead #ast-desktop-header .ast-custom-button {
+	color: var(--vf-color-action);
+}
+
+body.home.ast-theme-transparent-header:not(.astra-dark-mode-enable) #masthead #ast-desktop-header .ast-custom-button {
+	border-color: var(--vf-color-action);
+}
+
+body.home.ast-theme-transparent-header:not(.astra-dark-mode-enable) #masthead #ast-desktop-header :is(a, button, [tabindex="0"]):focus-visible {
+	outline: var(--vf-focus-width) solid var(--vf-color-focus);
+	outline-offset: var(--vf-focus-offset);
+}
+
 @media (prefers-reduced-motion: reduce) {
 	.vf-homepage .vf-home-object__art img {
 		transform: none;
@@ -941,7 +965,8 @@ body.astra-dark-mode-enable .vf-homepage {
 		color: ButtonText !important;
 	}
 
-	.vf-homepage a:focus-visible {
+	.vf-homepage a:focus-visible,
+	body.home.ast-theme-transparent-header:not(.astra-dark-mode-enable) #masthead #ast-desktop-header :is(a, button, [tabindex="0"]):focus-visible {
 		outline-color: Highlight;
 	}
 }
