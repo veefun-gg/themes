@@ -429,6 +429,20 @@
 }
 
 /* News adapts the merged foundation; shared Collector/Home rules stay intact. */
+/* Astra toggles body; html can retain its initial dark class. */
+body.astra-dark-mode-enable .vf-news-page {
+	--vf-paper: #0f172a;
+	--vf-ink: #f8fafc;
+	--vf-muted: #cbd5e1;
+	--vf-line: #64748b;
+	--vf-color-identity: #f8fafc;
+	--vf-color-relationship: #7dd3fc;
+	--vf-color-evidence: #cbd5e1;
+	--vf-color-unavailable: #cbd5e1;
+	--vf-color-focus: #fbbf24;
+	color-scheme: dark;
+}
+
 .ast-theme-transparent-header.ast-header-break-point .vf-news-page .vf-page-header {
 	/* Astra's configured mobile header is 72px and sits outside normal flow. */
 	padding-block-start: calc(var(--vf-space-8) + var(--vf-space-2));
